@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heavenly Eyes - ក្រុម E-Sport ខ្មែរ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --sky-blue: #4A90E2;
+            --gold: #FFD700;
+            --light-gold: #FFEC8B;
+            --dark-blue: #1A3A5F;
+            --white: #FFFFFF;
+            --light-bg: #F0F8FF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Battambang', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--sky-blue), var(--dark-blue));
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(26, 58, 95, 0.95);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            border-bottom: 2px solid var(--gold);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            min-width: 250px;
+        }
+        
+        .logo:hover {
+            transform: scale(1.02);
+        }
+        
+        .logo-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 25px var(--gold);
+            border: 2px solid var(--white);
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .logo-img::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .logo:hover .logo-img::before {
+            opacity: 1;
+        }
+        
+        .logo-img img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
+        }
+        
+        .logo-text-container {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            flex: 1;
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(to right, var(--gold), var(--light-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .logo-slogan {
+            font-size: 0.9rem;
+            color: var(--light-gold);
+            font-style: italic;
+            margin-top: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        /* Navigation Menu Styles */
+        nav {
+            flex-shrink: 0;
+            margin-left: 20px;
+        }
+        
+        .desktop-menu ul {
+            display: flex;
+            list-style: none;
+            gap: 0;
+            background: rgba(26, 58, 95, 0.9);
+            border-radius: 12px;
+            padding: 0;
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--gold);
+            flex-wrap: wrap;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .desktop-menu li {
+            position: relative;
+            border-right: 1px solid rgba(255, 215, 0, 0.2);
+        }
+        
+        .desktop-menu li:last-child {
+            border-right: none;
+        }
+        
+        .desktop-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 12px 20px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: block;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            font-size: 1rem;
+            white-space: nowrap;
+            min-width: max-content;
+            text-align: center;
+        }
+        
+        .desktop-menu a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.4s ease;
+            z-index: -1;
+        }
+        
+        .desktop-menu a:hover::before {
+            transform: scaleY(1);
+        }
+        
+        .desktop-menu a:hover {
+            color: var(--dark-blue);
+            transform: translateY(-2px);
+        }
+        
+        .desktop-menu a.active {
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            color: var(--dark-blue);
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* ការកែលម្អសម្រាប់ភាពរលូននៃម៉ឺនុយ */
+        .desktop-menu a {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .desktop-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--gold);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .desktop-menu a:hover::after,
+        .desktop-menu a.active::after {
+            width: 80%;
+        }
+        
+        .desktop-menu a:active {
+            transform: translateY(2px) scale(0.98);
+            transition: transform 0.1s ease;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 215, 0, 0.2);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            flex-shrink: 0;
+            border: 2px solid rgba(255, 215, 0, 0.5);
+        }
+        
+        .mobile-menu-btn:hover {
+            background: var(--gold);
+            color: var(--dark-blue);
+            transform: scale(1.1);
+        }
+        
+        .mobile-menu-btn:active {
+            transform: scale(0.9);
+            transition: transform 0.1s ease;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 100px;
+            text-align: center;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%231A3A5F" opacity="0.3"/><path d="M30,30 Q50,10 70,30 T90,50 T70,70 T50,90 T30,70 T10,50 T30,30 Z" fill="none" stroke="%23FFD700" stroke-width="2" opacity="0.5"/></svg>');
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="%23FFD700" opacity="0.5"/></svg>') repeat;
+            animation: twinkle 5s infinite alternate;
+            pointer-events: none;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(to right, var(--gold), var(--light-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: var(--light-gold);
+            animation: fadeInUp 1.5s ease-out;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--dark-blue);
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+            animation: fadeInUp 2s ease-out;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+            border-color: var(--white);
+        }
+        
+        .cta-button:active {
+            transform: translateY(2px) scale(0.98);
+            transition: transform 0.1s ease;
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+            background: linear-gradient(to right, var(--gold), var(--light-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            padding-bottom: 10px;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background: var(--gold);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: expand 1.5s ease-out;
+        }
+        
+        .content-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .content-card:active {
+            transform: scale(0.98);
+            transition: transform 0.1s ease;
+        }
+        
+        .content-card h3 {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .content-card h3 i {
+            font-size: 1.5rem;
+        }
+        
+        .content-card ul {
+            padding-left: 20px;
+        }
+        
+        .content-card li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .content-card li::before {
+            content: '▸';
+            color: var(--gold);
+            font-weight: bold;
+            position: absolute;
+            left: -20px;
+        }
+        
+        /* Games Section */
+        .games-container {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .game-card {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+        
+        .game-card:active {
+            transform: scale(0.98);
+            transition: transform 0.1s ease;
+        }
+        
+        .game-header {
+            padding: 20px;
+            text-align: center;
+            background: rgba(255, 215, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .game-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.2);
+            animation: bounce 2s infinite;
+        }
+        
+        .game-icon img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+        }
+        
+        .game-header h3 {
+            color: var(--gold);
+            font-size: 1.8rem;
+        }
+        
+        .game-content {
+            padding: 20px;
+        }
+        
+        /* Official Venues Section */
+        .venues-container {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .venue-card {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .venue-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .venue-card:active {
+            transform: scale(0.98);
+            transition: transform 0.1s ease;
+        }
+        
+        .venue-image {
+            height: 200px;
+            background: linear-gradient(45deg, var(--sky-blue), var(--dark-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--gold);
+        }
+        
+        .venue-content {
+            padding: 20px;
+        }
+        
+        .venue-content h3 {
+            color: var(--gold);
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(26, 58, 95, 0.9);
+            padding: 50px 0 20px;
+            text-align: center;
+            position: relative;
+            border-top: 2px solid var(--gold);
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-section h3 {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--gold);
+            color: var(--dark-blue);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        
+        .social-links a:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 15px var(--gold);
+            animation: none;
+        }
+        
+        .copyright {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: var(--light-gold);
+        }
+        
+        /* Scroll to Top Button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gold);
+            color: var(--dark-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border: 2px solid var(--white);
+        }
+        
+        .scroll-to-top.active {
+            opacity: 1;
+        }
+        
+        .scroll-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+        }
+        
+        .scroll-to-top:active {
+            transform: translateY(2px) scale(0.9);
+            transition: transform 0.1s ease;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes expand {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100px;
+            }
+        }
+        
+        @keyframes twinkle {
+            0% {
+                opacity: 0.3;
+            }
+            100% {
+                opacity: 0.7;
+            }
+        }
+        
+        /* Mobile Menu Styles - IMPROVED */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 100%;
+            background: rgba(26, 58, 95, 0.98);
+            backdrop-filter: blur(15px);
+            z-index: 999;
+            overflow-y: auto;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
+            border-left: 2px solid var(--gold);
+        }
+        
+        .mobile-menu.active {
+            display: block;
+            transform: translateX(0);
+            animation: slideInRight 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 2px solid var(--gold);
+            background: rgba(26, 58, 95, 0.95);
+        }
+        
+        .mobile-menu-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .mobile-menu-logo .logo-img {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .mobile-menu-logo .logo-text {
+            font-size: 1.3rem;
+        }
+        
+        .mobile-menu-close {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 215, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu-close:hover {
+            background: var(--gold);
+            color: var(--dark-blue);
+            transform: scale(1.1);
+        }
+        
+        .mobile-menu-close:active {
+            transform: scale(0.9);
+            transition: transform 0.1s ease;
+        }
+        
+        .mobile-menu ul {
+            list-style: none;
+            padding: 20px 0;
+        }
+        
+        .mobile-menu li {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: background 0.3s ease;
+        }
+        
+        .mobile-menu li:last-child {
+            border-bottom: none;
+        }
+        
+        .mobile-menu li:hover {
+            background: rgba(255, 215, 0, 0.1);
+        }
+        
+        .mobile-menu a {
+            display: flex;
+            align-items: center;
+            padding: 18px 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--light-gold);
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+            letter-spacing: 0.5px;
+        }
+        
+        .mobile-menu a i {
+            margin-right: 15px;
+            font-size: 1.2rem;
+            width: 25px;
+            text-align: center;
+            color: var(--gold);
+        }
+        
+        .mobile-menu a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .mobile-menu a:hover::before {
+            left: 100%;
+        }
+        
+        .mobile-menu a:hover {
+            background: rgba(255, 215, 0, 0.2);
+            color: var(--gold);
+            padding-left: 35px;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+        
+        .mobile-menu a:active {
+            transform: translateX(10px) scale(0.98);
+            transition: transform 0.1s ease;
+        }
+        
+        .mobile-menu a.active {
+            background: linear-gradient(135deg, var(--gold), var(--light-gold));
+            color: var(--dark-blue);
+            font-weight: bold;
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .mobile-menu-footer {
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 20px;
+        }
+        
+        .mobile-menu-footer p {
+            color: var(--light-gold);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .mobile-social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .mobile-social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--gold);
+            color: var(--dark-blue);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-social-links a:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 15px var(--gold);
+        }
+        
+        /* បន្ថែម animation ថ្មីសម្រាប់ការបើកម៉ឺនុយទូរស័ព្ទ */
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        /* ការកែលម្អសម្រាប់តួអក្សរនៅក្នុងម៉ឺនុយ */
+        .desktop-menu a span,
+        .mobile-menu a span {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        
+        .desktop-menu a:hover span,
+        .mobile-menu a:hover span {
+            transform: translateX(5px);
+        }
+        
+        /* បន្ថែម ripple effect សម្រាប់ចុចលើ menu items */
+        .desktop-menu a::before,
+        .mobile-menu a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .desktop-menu a:active::before,
+        .mobile-menu a:active::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1100px) {
+            .logo-text {
+                font-size: 1.6rem;
+            }
+            
+            .desktop-menu a {
+                padding: 10px 16px;
+                font-size: 0.95rem;
+            }
+        }
+        
+        @media (max-width: 950px) {
+            .header-content {
+                justify-content: space-between;
+            }
+            
+            .logo {
+                min-width: 200px;
+            }
+            
+            .logo-text {
+                font-size: 1.4rem;
+            }
+            
+            .logo-slogan {
+                font-size: 0.8rem;
+            }
+            
+            .desktop-menu a {
+                padding: 10px 14px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            .logo {
+                min-width: 180px;
+            }
+            
+            .logo-text {
+                font-size: 1.3rem;
+            }
+            
+            .logo-slogan {
+                display: none;
+            }
+            
+            .desktop-menu {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .scroll-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo {
+                min-width: 150px;
+            }
+            
+            .logo-text {
+                font-size: 1.2rem;
+            }
+            
+            .logo-img {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .mobile-menu {
+                width: 280px;
+            }
+            
+            .mobile-menu a {
+                font-size: 1rem;
+                padding: 16px 20px;
+            }
+            
+            .mobile-menu a:hover {
+                padding-left: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-img">
+                        <!-- Replace with actual logo image -->
+                        <img src="image/logo.png" alt="Heavenly Eyes Logo">
+                    </div>
+                    <div class="logo-text-container">
+                        <div class="logo-text">Heavenly Eyes</div>
+                        <div class="logo-slogan">ជំនាន់ថ្មីនៃកីឡាអេឡិចត្រូនិកកម្ពុជា</div>
+                    </div>
+                </div>
+                
+                <nav class="desktop-menu">
+                    <ul>
+                        <li><a href="index.html"><span>ទំព័រដើម</span></a></li>
+                        <li><a href="law.html"><span>ច្បាប់</span></a></li>
+                        <li><a href="#principles"><span>គោលការណ៍</span></a></li>
+                        <li><a href="#games"><span>ហ្គេម</span></a></li>
+                        <li><a href="#venues"><span>កន្លែងប្រកួត</span></a></li>
+                    </ul>
+                </nav>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <div class="mobile-menu-logo">
+                <div class="logo-img">
+                    <img src="image/logo.png" alt="Heavenly Eyes Logo">
+                </div>
+                <div class="logo-text">Heavenly Eyes</div>
+            </div>
+            <button class="mobile-menu-close" id="mobileMenuClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <ul>
+            <li><a href="index.html"><span>ទំព័រដើម</span></a></li>
+            <li><a href="law.html"><span>ច្បាប់ទូទៅ</span></a></li>
+            <li><a href="#goals"></i><span>គោលដៅ</span></a></li>
+            <li><a href="#principles"></i><span>គោលការណ៍</span></a></li>
+       
+        </ul>
+        
+       
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Heavenly Eyes</h1>
+            <p>ក្រុម E-Sport ខ្មែរ ដែលមានចេតនាលើកកម្ពស់កីឡាអេឡិចត្រូនិកកម្ពុជាទៅកម្រិតអន្តរជាតិ</p>
+            <a href="#games" class="cta-button">ស្វែងយល់ពីហ្គេមរបស់យើង</a>
+        </div>
+    </section>
+
+    <!-- Vision & Spirit Section -->
+    <section id="vision">
+        <div class="container">
+            <div class="section-title">
+                <h2>មូលដ្ឋានយុទ្ធសាស្ត្រ និងវិញ្ញាណក្ខន្ធ</h2>
+            </div>
+            
+            <div class="content-card">
+                <h3><i class="fas fa-binoculars"></i> ចក្ខុវិស័យ</h3>
+                <p>ក្រុម E-Sport ខ្មែរ ដែលមានចេតនាលើកកម្ពស់កីឡាអេឡិចត្រូនិកកម្ពុជាទៅកម្រិតអន្តរជាតិ តាមរយៈការអភិវឌ្ឍជំនាញរបស់អ្នកលេង និងការចូលរួមក្នុងព្រឹត្តិការណ៍ជាតិ និងអន្តរជាតិ</p>
+            </div>
+            
+            <div class="content-card">
+                <h3><i class="fas fa-heart"></i> វិញ្ញាណក្ខន្ធ</h3>
+                <ul>
+                    <li><strong>ភាពសាមគ្គី (Unity):</strong> ការធ្វើការជាក្រុម និងគាំទ្រគ្នាទៅវិញទៅមក</li>
+                    <li><strong>ការគោរព (Respect):</strong> គោរពមិត្តរួមក្រុម គូប្រកួត និងអ្នកគាំទ្រ</li>
+                    <li><strong>សមត្ថភាពដឹកនាំ (Leadership):</strong> អភិវឌ្ឍសមត្ថភាពដឹកនាំ</li>
+                    <li><strong>សេចក្តីអត់ធ្មត់ (Perseverance):</strong> បន្តខិតខំប្រឹងប្រែងដើម្បីសមិទ្ធផល</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- General Rules Section -->
+    <section id="rules">
+        <div class="container">
+            <div class="section-title">
+                <h2>ច្បាប់ទូទៅសម្រាប់សមាជិកទាំងអស់</h2>
+            </div>
+            
+            <div class="content-card">
+                <h3><i class="fas fa-gavel"></i> កាតព្វកិច្ច និងកាតព្វកិច្ច</h3>
+                <ul>
+                    <li><strong>វត្តមាន:</strong> ចូលរួមប្រឹក្សាយោបល់ និងហ្គេមជាមួយក្រុមឱ្យបានទៀងទាត់ ជាពិសេសនៅមុន និងក្នុងពេលប្រកួត</li>
+                    <li><strong>ឥរិយាបថ:</strong> រក្សាឥរិយាបថល្អ និងគោរពច្បាប់ក្រុម មិនប្រើពាក្យសម្បថ ឬធ្វើអំពើហិង្សា</li>
+                    <li><strong>ភាពជាអ្នកដឹកនាំ:</strong> បង្ហាញសមត្ថភាពដឹកនាំ និងជួយសមាជិកក្រុមផ្សេងទៀត</li>
+                    <li><strong>ការអនុវត្ត:</strong> អនុវត្តតាមផែនការហ្គេម និងយុទ្ធសាស្ត្ររបស់ក្រុមដោយស្មោះត្រង់</li>
+                </ul>
+            </div>
+            
+            <div class="content-card">
+                <h3><i class="fas fa-handshake"></i> ការសហការ និងទំនាក់ទំនង</h3>
+                <ul>
+                    <li><strong>ការអនុវត្ត:</strong> ចូលរួមអនុវត្តជាមួយក្រុមឱ្យបានទៀងទាត់ និងសកម្មនៅក្នុងហ្គេមសំខាន់ៗ</li>
+                    <li><strong>ទំនាក់ទំនង:</strong> រក្សាទំនាក់ទំនងល្អជាមួយមិត្តរួមក្រុម និងគ្រប់គ្រងការប្តេជ្ញាចិត្ត និងអារម្មណ៍របស់អ្នក</li>
+                    <li><strong>ការគាំទ្រ/អាជ្ញា:</strong> ត្រូវគាំទ្រក្រុម និងអ្នកគាំទ្រក្នុងពេលប្រកួត និងពេលធម្មតា</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Goals Section -->
+    <section id="goals">
+        <div class="container">
+            <div class="section-title">
+                <h2>គោលដៅ</h2>
+            </div>
+            
+            <div class="content-card">
+                <h3><i class="fas fa-bullseye"></i> គោលដៅរយៈពេលខ្លី (៦ខែ)</h3>
+                <ul>
+                    <li><strong>Mobile Legends:</strong> ចូលដល់វគ្គពាក់កណ្តាលផ្តាច់ព្រ័ត្រ MPL Cambodia Season ខាងមុខ</li>
+                    <li><strong>Free Fire:</strong> ចូលដល់វគ្គផ្តាច់ព្រ័ត្រ នៃព្រឹត្តិការណ៍សំខាន់ៗ យ៉ាងហោចណាស់ ១ ព្រឹត្តិការណ៍ក្នុងមួយរដូវកាល</li>
+                    <li><strong>ក្រុម:</strong> បង្កើតមាតិកា (Content) លើវេទិកា (TikTok, Facebook, YouTube) ដែលមានអ្នកតាមដាន (Follower) កើនឡើង ៥០%</li>
+                </ul>
+            </div>
+            
+            <div class="content-card">
+                <h3><i class="fas fa-flag-checkered"></i> គោលដៅរយៈពេលវែង (១ឆ្នាំ)</h3>
+                <ul>
+                    <li>ទាក់ទាញអ្នកឧបត្ថម្ភ (Sponsor) យ៉ាងហោចណាស់ ២ នាក់</li>
+                    <li>ក្លាយជា "ក្រុមដែលទទួលស្គាល់ និងគោរពក្នុងវិស័យ E-Sport កម្ពុជា"</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Principles Section -->
+    <section id="principles">
+        <div class="container">
+            <div class="section-title">
+                <h2>គោលការណ៍សម្រាប់ក្រុម</h2>
+            </div>
+            
+            <div class="content-card">
+                <ul>
+                    <li><strong>សមត្ថភាពដឹកនាំ:</strong> មេក្រុម (Team Captain) និងអ្នកគ្រប់គ្រង (Manager) ត្រូវមានសមត្ថភាពដឹកនាំ និងគ្រប់គ្រងការងារក្រុមឱ្យបានល្អ ដោយគោរពច្បាប់ក្រុម និងសមាជិកគ្រប់រូប</li>
+                    <li><strong>ការទំនាក់ទំនងភ្លាមៗ:</strong> ត្រូវចូលរួមក្នុងការពិភាក្សាក្រុម និងឆាប់ឆ្លើយតបនឹងសារ (Discord, Telegram) ជានិច្ច</li>
+                    <li><strong>ការវិភាគ និងការវាយតម្លៃ:</strong> ចូលរួមក្នុងការវិភាគហ្គេម (VOD Review) និងទទួលយកការវាយតម្លៃដើម្បីការអភិវឌ្ឍ</li>
+                    <li><strong>ការគ្រប់គ្រងពេលវេលា:</strong> រៀបចំពេលវេលាអនុវត្ត និងប្រកួតឱ្យបានសមស្រប និងមិនប៉ះពាល់ដល់ការសិក្សា ឬការងារ (សម្រាប់មេក្រុម និងអ្នកគ្រប់គ្រង)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Section -->
+    <section id="games">
+        <div class="container">
+            <div class="section-title">
+                <h2>ហ្គេមដែលយើងប្រកួត</h2>
+            </div>
+            
+            <div class="games-container">
+                <div class="game-card">
+                    <div class="game-header">
+                        <div class="game-icon">
+                            <!-- Replace with actual Mobile Legends icon -->
+                            <img src="image/mlbb.png" alt="Mobile Legends">
+                        </div>
+                        <h3>Mobile Legends</h3>
+                    </div>
+                    <div class="game-content">
+                        <ul>
+                            <li><strong>យុទ្ធសាស្ត្រ:</strong> ស្វែងយល់ពី Meta (Meta-game) ថ្មីៗ និងអភិវឌ្ឍយុទ្ធសាស្ត្រក្រុម</li>
+                            <li><strong>តួនាទី (Role):</strong> ត្រូវជ្រើសរើសតួនាទីដែលសមស្រប និងអនុវត្តឱ្យបានល្អក្នុងពេលប្រកួត</li>
+                            <li><strong>ការអនុវត្ត:</strong> អនុវត្តជាមួយក្រុមយ៉ាងហោចណាស់ ៣ ដងក្នុងមួយសប្តាហ៍ និងអនុវត្តផ្ទាល់ខ្លួន (Solo Queue) យ៉ាងហោចណាស់ ១០ ហ្គេមក្នុងមួយសប្តាហ៍</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-header">
+                        <div class="game-icon">
+                            <!-- Replace with actual Free Fire icon -->
+                            <img src="image/ff.jpg" alt="Free Fire">
+                        </div>
+                        <h3>Free Fire</h3>
+                    </div>
+                    <div class="game-content">
+                        <ul>
+                            <li><strong>ជំនាញបច្ចេកទេស:</strong> អភិវឌ្ឍជំនាញបច្ចេកទេសដូចជា ការផ្លាស់ប្តូរទីតាំង (Rotation) ការប្រមូលឧបករណ៍ (Loot) និងការតាំងទីតាំង (Positioning) ឱ្យបានម៉ត់ចត់</li>
+                            <li><strong>ការដឹកនាំក្នុងហ្គេម:</strong> បង្កើត IGL (In-Game Leader) ដែលមានសមត្ថភាពដឹកនាំក្នុងពេលប្រកួត</li>
+                            <li><strong>ការគ្រប់គ្រងផែនទី:</strong> អនុវត្តជាមួយក្រុមដើម្បីគ្រប់គ្រងផែនទី (Map Control) និងការចុះទីតាំង (Drop Spot) និងស្វែងយល់ពីស្ថានភាព ៤v៤</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Official Venues Section -->
+    <section id="venues">
+        <div class="container">
+            <div class="section-title">
+                <h2>កន្លែងប្រកួតផ្លូវការ</h2>
+            </div>
+            
+            <div class="venues-container">
+                <div class="venue-card">
+                    <div class="venue-image">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <div class="venue-content">
+                        <h3>កន្លែងអនុវត្ត</h3>
+                        <p>ភ្នំពេញ, កម្ពុជា</p>
+                        <p>បង្កើតបរិស្ថានអនុវត្តដែលមានគុណភាពខ្ពស់ សម្រាប់សមាជិកក្រុមធ្វើការអនុវត្តជាមួយគ្នា</p>
+                    </div>
+                </div>
+                
+                <div class="venue-card">
+                    <div class="venue-image">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="venue-content">
+                        <h3>កន្លែងប្រកួតផ្លូវការ</h3>
+                        <p>ព្រឹត្តិការណ៍ E-Sport ផ្សេងៗ</p>
+                        <p>ចូលរួមព្រឹត្តិការណ៍ E-Sport ផ្លូវការនានា ទាំងក្នុងស្រុក និងអន្តរជាតិ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Heavenly Eyes</h3>
+                    <p>ក្រុម E-Sport ខ្មែរ</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>ទំនាក់ទំនង</h3>
+                    <p>អ៊ីមែល: info@heavenlyeyes.com</p>
+                    <p>ទូរស័ព្ទ: +855 12 345 678</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>ហ្គេមដែលយើងលេង</h3>
+                    <p>Mobile Legends: Bang Bang</p>
+                    <p>Free Fire</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Heavenly Eyes. រក្សាសិទ្ធិគ្រប់យ៉ាង</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+            
+            // បន្ថែម effect នៅពេលចុច
+            this.classList.add('clicked');
+            setTimeout(() => {
+                this.classList.remove('clicked');
+            }, 300);
+        });
+        
+        mobileMenuClose.addEventListener('click', function() {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+            
+            // បន្ថែម effect នៅពេលចុច
+            this.classList.add('clicked');
+            setTimeout(() => {
+                this.classList.remove('clicked');
+            }, 300);
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+                
+                // បន្ថែម effect នៅពេលចុច
+                this.classList.add('clicked');
+                setTimeout(() => {
+                    this.classList.remove('clicked');
+                }, 300);
+            });
+        });
+        
+        // Close mobile menu when clicking outside of it
+        document.addEventListener('click', function(e) {
+            if (!mobileMenu.contains(e.target) && e.target !== mobileMenuBtn) {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    // បន្ថែម effect នៅពេលចុច
+                    this.classList.add('clicked');
+                    setTimeout(() => {
+                        this.classList.remove('clicked');
+                    }, 300);
+                    
+                    // Smooth scroll
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update active menu item
+                    document.querySelectorAll('nav a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+        
+        // Scroll to top button
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('active');
+            } else {
+                scrollToTopBtn.classList.remove('active');
+            }
+        });
+        
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            
+            // បន្ថែម effect នៅពេលចុច
+            this.classList.add('clicked');
+            setTimeout(() => {
+                this.classList.remove('clicked');
+            }, 300);
+        });
+        
+        // Add animation on scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 1s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all content cards and game cards
+        document.querySelectorAll('.content-card, .game-card, .venue-card').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Update active menu item based on scroll position
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // ការកែលម្អសម្រាប់ភាពរលូននៃម៉ឺនុយ
+        document.querySelectorAll('nav a, .mobile-menu a, .cta-button, .mobile-menu-btn, .scroll-to-top, .game-card, .venue-card, .content-card').forEach(element => {
+            // ការពារការជ្រើសរើសអត្ថបទនៅពេលចុចច្រើនដង
+            element.addEventListener('mousedown', function(e) {
+                if (e.detail > 1) {
+                    e.preventDefault();
+                }
+            });
+            
+            // បន្ថែម effect នៅពេលចុច
+            element.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.98)';
+            });
+            
+            element.addEventListener('touchend', function() {
+                this.style.transform = '';
+            });
+        });
+        
+        // ការកែលម្អសម្រាប់ប៊ូតុង CTA
+        document.querySelector('.cta-button').addEventListener('click', function(e) {
+            // បន្ថែម effect នៅពេលចុច
+            this.classList.add('clicked');
+            setTimeout(() => {
+                this.classList.remove('clicked');
+            }, 300);
+        });
+    </script>
+</body>
+</html>

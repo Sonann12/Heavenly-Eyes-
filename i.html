@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heavenly Eyes - E-Sport Event</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --gold: #FFD700;
+            --light-gold: #FFEC8B;
+            --white: #FFFFFF;
+            --sky-blue: #87CEEB;
+            --dark-blue: #1E3A8A;
+            --deep-blue: #0F1C3F;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--deep-blue) 0%, var(--dark-blue) 50%, var(--sky-blue) 100%);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles with Enhanced Design */
+        header {
+            background: rgba(15, 28, 63, 0.95);
+            padding: 1rem 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(12px);
+            transition: var(--transition);
+        }
+
+        .header-scrolled {
+            padding: 0.7rem 2rem;
+            background: rgba(15, 28, 63, 0.98);
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: var(--transition);
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px var(--gold);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: conic-gradient(var(--gold), var(--light-gold), var(--gold));
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .logo:hover::before {
+            opacity: 0.4;
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(to right, var(--gold), var(--light-gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        .logo-text span {
+            font-size: 0.9rem;
+            color: var(--sky-blue);
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        /* Enhanced Navigation Menu */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.7rem 1.2rem;
+            border-radius: 30px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--gold), var(--light-gold));
+            transition: var(--transition);
+            z-index: -1;
+            border-radius: 30px;
+        }
+
+        nav a:hover::before {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--deep-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            height: 3px;
+            width: 100%;
+            background-color: var(--gold);
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        /* Main Content with Enhanced Design */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            padding-top: 100px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 5rem 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .hero:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 215, 0, 0.4);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+            z-index: -1;
+            animation: pulse 8s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            100% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, var(--gold), var(--light-gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+            letter-spacing: 2px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            color: var(--sky-blue);
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(45deg, var(--gold), var(--light-gold));
+            color: var(--deep-blue);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.6);
+        }
+
+        /* Claim Prize Section */
+        .claim-prize {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .claim-prize::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--gold), var(--light-gold));
+        }
+
+        .claim-prize h3 {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .claim-prize p {
+            margin-bottom: 1.5rem;
+            color: var(--sky-blue);
+        }
+
+        .claim-form {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .claim-input {
+            padding: 0.8rem 1.5rem;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            font-size: 1rem;
+            width: 300px;
+            max-width: 100%;
+            transition: var(--transition);
+        }
+
+        .claim-input:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .claim-button {
+            padding: 0.8rem 2rem;
+            background: linear-gradient(45deg, var(--gold), var(--light-gold));
+            color: var(--deep-blue);
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .claim-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .event-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--gold), var(--light-gold));
+            transition: var(--transition);
+        }
+
+        .card:hover::before {
+            width: 100%;
+            opacity: 0.1;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+
+        .card h3 {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card h3 i {
+            font-size: 1.4rem;
+            transition: var(--transition);
+        }
+
+        .card:hover h3 i {
+            transform: scale(1.2);
+        }
+
+        .card ul {
+            list-style: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .card li::before {
+            content: '★';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+
+        /* Enhanced Prizes Section */
+        .prizes-section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.8rem;
+            color: var(--gold);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 10%;
+            width: 80%;
+            height: 3px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+        }
+
+        .prize-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .prize-table:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .prize-table th {
+            background: linear-gradient(45deg, rgba(255, 215, 0, 0.2), rgba(255, 236, 139, 0.2));
+            color: var(--gold);
+            padding: 1.5rem;
+            text-align: left;
+            font-size: 1.1rem;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .prize-table td {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .prize-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .prize-table tr:hover td {
+            background: rgba(255, 215, 0, 0.05);
+        }
+
+        /* Enhanced Footer */
+        footer {
+            background: rgba(15, 28, 63, 0.95);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-content p {
+            margin-bottom: 1.5rem;
+            color: var(--sky-blue);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            font-size: 1.3rem;
+            border-radius: 50%;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--gold), var(--light-gold));
+            border-radius: 50%;
+            transform: scale(0);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .social-links a:hover::before {
+            transform: scale(1);
+        }
+
+        .social-links a:hover {
+            color: var(--deep-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Responsive Design with Enhanced Mobile Menu */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .menu-toggle {
+                display: flex;
+                position: absolute;
+                top: 1.5rem;
+                right: 2rem;
+            }
+
+            nav {
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.5s ease;
+            }
+
+            nav.active {
+                max-height: 300px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding-top: 1rem;
+            }
+
+            nav a {
+                display: block;
+                text-align: center;
+                padding: 1rem;
+                border-radius: 10px;
+            }
+
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .event-details {
+                grid-template-columns: 1fr;
+            }
+
+            .prize-table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            .container {
+                padding-top: 140px;
+            }
+
+            .claim-form {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .claim-input {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 1rem;
+                padding-top: 140px;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .logo-text h1 {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .claim-prize {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Floating Elements for Visual Interest */
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, -15px); }
+            100% { transform: translate(0, 0px); }
+        }
+
+        /* Scroll to Top Button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--gold), var(--light-gold));
+            color: var(--deep-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        .scroll-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.5);
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header id="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <div class="logo">
+                    <!-- Using an image for the logo -->
+                    <img src="image/logo.png" alt="Heavenly Eyes Logo">
+                </div>
+                <div class="logo-text">
+                    <h1>Heavenly Eyes</h1>
+                    <span>E-SPORT MOBILE LEGENDS</span>
+                </div>
+            </div>
+            
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <nav id="navMenu">
+                <ul>
+                    <li><a href="index.html">ទំព័រដើម</a></li>
+                    <li><a href="law.html">ច្បាប់ទូទៅ</a></li>
+                    <li><a href="#format">ទម្រង់</a></li>
+                    <li><a href="#prizes">រង្វាន់</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero" id="home">
+            <h2 class="floating">Heavenly Clash: Road to Glory</h2>
+            <p>ព្រឹត្តិការណ៍ការប្រកួតក្នុងក្រុម Heavenly Eyes ដែលផ្តល់ឱកាសឱ្យសមាជិកទទួលបានរង្វាន់ដ៏មានតម្លៃ</p>
+            <a href="#prizes" class="cta-button">ស្វែងយល់ពីរង្វាន់</a>
+        </section>
+
+        <!-- New Claim Prize Section -->
+        <section class="claim-prize">
+            <h3><i class="fas fa-gift"></i> ទាញយករង្វាន់របស់អ្នក</h3>
+            <p>បញ្ចូល ID របស់អ្នកខាងក្រោម ដើម្បីទាញយករង្វាន់ពីការចូលរួមការប្រកួត</p>
+            <div class="claim-form">
+                <input type="text" class="claim-input" placeholder="បញ្ចូល ID របស់អ្នក..." id="playerId">
+                <button class="claim-button" id="claimPrizeBtn">ទាញយករង្វាន់</button>
+            </div>
+            <div id="claimResult" style="margin-top: 1rem;"></div>
+        </section>
+
+        <section id="about">
+            <div class="card floating">
+                <h3><i class="fas fa-bullseye"></i> គោលបំណង</h3>
+                <ul>
+                    <li>បង្កើនស្មារតីក្រុម និងការសហការគ្នា</li>
+                    <li>ដាក់ពិន័យជំនាញផ្ទាល់ខ្លួន និងជាក្រុម</li>
+                    <li>ផ្តល់ឱកាសឱ្យសមាជិកទទួលបានរង្វាន់ដ៏មានតម្លៃ</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="format">
+            <h2 class="section-title">ទម្រង់ និងរចនាសម្ព័ន្ធការប្រកួត</h2>
+            <div class="event-details">
+                <div class="card">
+                    <h3><i class="fas fa-trophy"></i> ទម្រង់</h3>
+                    <p><strong>Round Robin</strong> (លេងជុំគ្នាទាំងអស់) តាមដោយវគ្គផ្ដាច់ព្រ័ត្រ</p>
+                    <ul>
+                        <li><strong>វគ្គ Round Robin:</strong> រាល់ក្រុមរង (ឬសមាជិក) នឹងជួបគ្នាយ៉ាងហោចណាស់ម្តង</li>
+                        <li><strong>វគ្គផ្ដាច់ព្រ័ត្រ (Top 4):</strong> ៤ក្រុម/សមាជិកដែលមានពិន្ទុខ្ពស់ជាងគេនឹងចូលវគ្គផ្ដាច់ព្រ័ត្រ</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3><i class="fas fa-star"></i> ប្រព័ន្ធពិន្ទុ</h3>
+                    <ul>
+                        <li><strong>ឈ្នះ:</strong> ៣ ពិន្ទុ</li>
+                        <li><strong>អូសពាក្យ (Draw):</strong> ១ ពិន្ទុ</li>
+                        <li><strong>ចាញ់:</strong> ០ ពិន្ទុ</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3><i class="fas fa-info-circle"></i> ការណែនាំបន្ថែម</h3>
+                    <ul>
+                        <li><strong>អ្នករៀបចំ:</strong> ត្រូវតែមានអ្នកគ្រប់គ្រងព្រឹត្តិការណ៍ ១-២នាក់</li>
+                        <li><strong>វិន័យ:</strong> ការមិនគោរពពេលវេលា ឬអាកប្បកិរិយាមិនល្អអាចនាំឱ្យរង្វាន់ត្រូវដក</li>
+                        <li><strong>ភាពយុត្តិធម៌:</strong> ហាមប្រាមការប្រើគណនីរបស់អ្នកដទៃ និងការជួយពីអ្នកលេងខាងក្រៅ</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="prizes" class="prizes-section">
+            <h2 class="section-title">បញ្ជីរង្វាន់ និងការបែងចែក</h2>
+            <table class="prize-table">
+                <thead>
+                    <tr>
+                        <th>ចំណាត់ថ្នាក់</th>
+                        <th>រង្វាន់</th>
+                        <th>ចំនួន</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ជ័យលាភ់ព្រឹត្តិការណ៍ (ទី ១)</strong></td>
+                        <td>• Skin Epic/Legend (តម្លៃ 899-1199 💎)<br>• Weekly Diamond Pass (តម្លៃ 299 💎)<br>• Starlight Member (១ខែ)</td>
+                        <td>១ ឈុត</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ចំណាត់ថ្នាក់រតនា (ទី ២)</strong></td>
+                        <td>• Skin Special/Elite (តម្លៃ 599 💎)<br>• Weekly Diamond Pass (តម្លៃ 299 💎)</td>
+                        <td>១ ឈុត</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ចំណាត់ថ្នាក់សំរិទ្ធ (ទី ៣)</strong></td>
+                        <td>• Starlight Member (១ខែ)<br>• Diamonds (១០០ 💎)</td>
+                        <td>១ ឈុត</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ចំណាត់ថ្នាក់ទី ៤</strong></td>
+                        <td>• Diamonds (៥០ 💎)</td>
+                        <td>១ ឈុត</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ចំណាត់ថ្នាក់ ៥-៨</strong></td>
+                        <td>• 7-Day Skin Fragment/Trial Skin</td>
+                        <td>សម្រាប់គ្រប់អ្នកលេង</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="card">
+                <h3><i class="fas fa-gift"></i> រង្វាន់បន្ថែម (សម្រាប់លើកទឹកចិត្ត)</h3>
+                <ul>
+                    <li><strong>MVP នៃព្រឹត្តិការណ៍ (FMVP):</strong> ទទួលបាន <strong>Diamonds 50 💎</strong> បន្ថែមពីលើរង្វាន់ក្រុម</li>
+                    <li><strong>សមាជិកដែលចូលរួមគ្រប់គ្រាន់:</strong> សមាជិកទាំងអស់ដែលបញ្ចប់ការប្រកួតយ៉ាងហោចណាស់ ៨០% នឹងទទួលបាន <strong>Trial Skin (៣-៧ថ្ងៃ)</strong> មួយ</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="schedule">
+            <div class="card">
+                <h3><i class="fas fa-calendar-alt"></i> កាលវិភាគ និងដំណើរការរៀបចំ</h3>
+                <ul>
+                    <li><strong>រយៈពេលចុះឈ្មោះ:</strong> ១សប្ដាហ៍</li>
+                    <li><strong>រយៈពេលប្រកួត:</strong> ២សប្ដាហ៍ (សប្ដាហ៍ទី១សម្រាប់ Round Robin, សប្ដាហ៍ទី២សម្រាប់វគ្គផ្ដាច់ព្រ័ត្រ)</li>
+                    <li><strong>ប្រកួតរៀងរាល់ថ្ងៃ</strong> សៅរ៍ និង អាទិត្យ (ឬតាមការសម្របសម្រួលរបស់សមាជិក)</li>
+                    <li><strong>សម្រុកគ្នាលេង:</strong> ត្រូវបានរៀបចំដោយអ្នកគ្រប់គ្រងក្រុម ឬអ្នកដឹកនាំក្រុម</li>
+                    <li><strong>ផ្សព្វផ្សាយលទ្ធផល:</strong> លទ្ធផល និងពិន្ទុនឹងត្រូវផ្សព្វផ្សាយនៅក្នុង Group Chat/Discord server របស់ក្រុម</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2023 Heavenly Eyes E-Sport Team. All rights reserved.</p>
+            <p>Mobile Legends: Bang Bang is a registered trademark of Moonton.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            const scrollToTop = document.getElementById('scrollToTop');
+            
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+            
+            if (window.scrollY > 300) {
+                scrollToTop.classList.add('active');
+            } else {
+                scrollToTop.classList.remove('active');
+            }
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            
+            // Animate hamburger icon
+            const spans = menuToggle.querySelectorAll('span');
+            if (navMenu.classList.contains('active')) {
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+            } else {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
+
+        // Scroll to top functionality
+        document.getElementById('scrollToTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Close mobile menu if open
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        const spans = menuToggle.querySelectorAll('span');
+                        spans[0].style.transform = 'none';
+                        spans[1].style.opacity = '1';
+                        spans[2].style.transform = 'none';
+                    }
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Claim prize functionality
+        document.getElementById('claimPrizeBtn').addEventListener('click', function() {
+            const playerId = document.getElementById('playerId').value.trim();
+            const resultDiv = document.getElementById('claimResult');
+            
+            if (!playerId) {
+                resultDiv.innerHTML = '<p style="color: #ff6b6b;">សូមបញ្ចូល ID របស់អ្នក!</p>';
+                return;
+            }
+            
+            // Simulate API call with loading state
+            resultDiv.innerHTML = '<p style="color: var(--sky-blue);"><i class="fas fa-spinner fa-spin"></i> កំពុងពិនិត្យ ID របស់អ្នក...</p>';
+            
+            // Simulate server response after a delay
+            setTimeout(() => {
+                // For demo purposes, let's assume any ID starting with "HE" is valid
+                if (playerId.startsWith('HE')) {
+                    resultDiv.innerHTML = `
+                        <div style="color: var(--gold); background: rgba(255,215,0,0.1); padding: 1rem; border-radius: 10px; border: 1px solid var(--gold);">
+                            <p><i class="fas fa-check-circle"></i> អបអរសាទរ! អ្នកមានសិទ្ធិទទួលរង្វាន់!</p>
+                            <p style="margin-top: 0.5rem;">រង្វាន់របស់អ្នកនឹងត្រូវបានផ្ញើទៅក្នុងគណនីហ្គេមរបស់អ្នកក្នុងរយៈពេល ២៤ម៉ោង។</p>
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <div style="color: #ff6b6b; background: rgba(255,107,107,0.1); padding: 1rem; border-radius: 10px; border: 1px solid #ff6b6b;">
+                            <p><i class="fas fa-exclamation-triangle"></i> សូមអភ័យទោស! យើងមិនអាចរកឃើញ ID "${playerId}" នេះទេ។</p>
+                            <p style="margin-top: 0.5rem;">សូមពិនិត្យមើល ID របស់អ្នកម្តងទៀត ឬទាក់ទងអ្នកគ្រប់គ្រងក្រុម។</p>
+                        </div>
+                    `;
+                }
+            }, 1500);
+        });
+
+        // Allow pressing Enter to submit the form
+        document.getElementById('playerId').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('claimPrizeBtn').click();
+            }
+        });
+    </script>
+</body>
+</html>
